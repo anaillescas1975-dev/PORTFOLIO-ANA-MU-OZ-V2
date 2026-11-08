@@ -70,6 +70,7 @@ export interface PortfolioContent {
     ctaSecondary: string;
     availableBadge: string;
     mobilityBadge: string;
+    verifiedBadge: string;
   };
   about: {
     kicker: string;
@@ -80,6 +81,7 @@ export interface PortfolioContent {
       title: string;
       desc: string;
     }[];
+    degreeKicker: string;
     degreeTitle: string;
     degreeSchool: string;
   };
@@ -89,6 +91,13 @@ export interface PortfolioContent {
     subheading: string;
     learnMore: string;
     viewDetails: string;
+    mediaStrip1: string;
+    mediaStrip2: string;
+    adminStrip: string[];
+    modalStrategicSummary: string;
+    modalResponsibilities: string;
+    modalRelatedSkills: string;
+    modalClose: string;
     areas: AreaItem[];
   };
   careerSection: {
@@ -96,12 +105,27 @@ export interface PortfolioContent {
     heading: string;
     subheading: string;
     educationTitle: string;
+    viewLess: string;
+    viewResponsibilities: string;
+    responsibilitiesTitle: string;
+    featuredProgramsTitle: string;
+    educationCardKicker: string;
+    educationCardTitle: string;
+    languagesCardKicker: string;
+    languagesCardTitle: string;
+    languagesList: { lang: string; level: string }[];
+    mobilityCardKicker: string;
+    mobilityCardTitle: string;
+    mobilityList: string[];
     experiences: ExperienceItem[];
   };
   skillsSection: {
     kicker: string;
     heading: string;
     subheading: string;
+    aiBannerTitle: string;
+    aiBannerQuote: string;
+    aiBannerTag: string;
     categories: SkillCategory[];
   };
   contactSection: {
@@ -111,18 +135,36 @@ export interface PortfolioContent {
     readyPrompt: string;
     emailLabel: string;
     phoneLabel: string;
+    phoneSubtext: string;
     linkedinLabel: string;
+    linkedinSubtext: string;
     locationLabel: string;
     copyEmail: string;
     copied: string;
+    cvBannerKicker: string;
+    cvBannerTitle: string;
+    cvBannerBtn: string;
     form: {
       title: string;
+      subtext: string;
+      nameLabel: string;
+      emailLabel: string;
+      subjectLabel: string;
+      messageLabel: string;
       namePlaceholder: string;
       emailPlaceholder: string;
       subjectPlaceholder: string;
       messagePlaceholder: string;
       submitBtn: string;
       successMsg: string;
+      sentNote: string;
+      sendAnother: string;
+      responseGuarantee: string;
     };
+  };
+  footer: {
+    backToTop: string;
+    rightsReserved: string;
+    legalNote: string;
   };
 }

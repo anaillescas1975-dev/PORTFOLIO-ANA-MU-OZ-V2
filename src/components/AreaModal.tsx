@@ -1,13 +1,19 @@
 import React, { useEffect } from 'react';
-import { X, Check, ArrowRight, Sparkles } from 'lucide-react';
+import { X, Check } from 'lucide-react';
 import { AreaItem } from '../types';
 
 interface AreaModalProps {
   area: AreaItem | null;
   onClose: () => void;
+  labels: {
+    strategicSummary: string;
+    responsibilities: string;
+    relatedSkills: string;
+    close: string;
+  };
 }
 
-export const AreaModal: React.FC<AreaModalProps> = ({ area, onClose }) => {
+export const AreaModal: React.FC<AreaModalProps> = ({ area, onClose, labels }) => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -36,7 +42,7 @@ export const AreaModal: React.FC<AreaModalProps> = ({ area, onClose }) => {
           type="button"
           onClick={onClose}
           className="absolute top-5 right-5 z-20 p-2.5 rounded-full bg-white/90 text-[#0E1B2E] hover:bg-[#0E1B2E] hover:text-white transition-all shadow-sm"
-          aria-label="Cerrar ventana"
+          aria-label={labels.close}
         >
           <X className="w-5 h-5" />
         </button>
@@ -67,7 +73,7 @@ export const AreaModal: React.FC<AreaModalProps> = ({ area, onClose }) => {
         <div className="p-6 sm:p-8 space-y-6 max-h-[60vh] overflow-y-auto">
           <div>
             <h4 className="text-xs font-bold uppercase tracking-wider text-[#C9828F] mb-2">
-              Resumen Estratégico
+              {labels.strategicSummary}
             </h4>
             <p className="text-sm sm:text-base text-[#132238]/85 leading-relaxed font-light">
               {area.description}
@@ -76,7 +82,7 @@ export const AreaModal: React.FC<AreaModalProps> = ({ area, onClose }) => {
 
           <div>
             <h4 className="text-xs font-bold uppercase tracking-wider text-[#C9828F] mb-3">
-              Responsabilidades Clave & Aportación
+              {labels.responsibilities}
             </h4>
             <ul className="space-y-2.5">
               {area.highlights.map((item, idx) => (
@@ -93,7 +99,7 @@ export const AreaModal: React.FC<AreaModalProps> = ({ area, onClose }) => {
           {/* Core Competencies in this Area */}
           <div>
             <h4 className="text-xs font-bold uppercase tracking-wider text-[#C9828F] mb-3">
-              Competencias Vinculadas
+              {labels.relatedSkills}
             </h4>
             <div className="flex flex-wrap gap-2">
               {area.skills.map((skill, idx) => (
@@ -118,7 +124,7 @@ export const AreaModal: React.FC<AreaModalProps> = ({ area, onClose }) => {
             onClick={onClose}
             className="px-5 py-2 text-xs font-semibold text-white bg-[#0E1B2E] rounded-full hover:bg-[#1B3050] transition-colors"
           >
-            Cerrar detalle
+            {labels.close}
           </button>
         </div>
       </div>

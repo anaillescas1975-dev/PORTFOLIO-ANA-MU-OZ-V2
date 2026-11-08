@@ -87,15 +87,15 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ content }) => {
           <div className="space-y-1">
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#E6B5BF]">
               <Sparkles className="w-4 h-4" />
-              <span>Inteligencia Artificial Aplicada a la Comunicación</span>
+              <span>{content.skillsSection.aiBannerTitle}</span>
             </div>
             <p className="font-serif text-xl font-normal text-white">
-              Criterio editorial clásico potenciado con herramientas de productividad de vanguardia.
+              {content.skillsSection.aiBannerQuote}
             </p>
           </div>
           <div className="shrink-0">
             <span className="inline-block px-4 py-2 rounded-full bg-white/10 text-white text-xs font-medium border border-white/20">
-              Uso ético y contrastación continua
+              {content.skillsSection.aiBannerTag}
             </span>
           </div>
         </div>

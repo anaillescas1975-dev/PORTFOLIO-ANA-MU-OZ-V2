@@ -20,7 +20,7 @@ export const Footer: React.FC<FooterProps> = ({ content }) => {
               {content.meta.fullName}
             </span>
             <span className="text-xs text-[#E6B5BF] font-light">
-              {content.meta.kicker} · Illescas (Toledo) & Madrid
+              {content.meta.kicker} · {content.meta.location}
             </span>
           </div>
 
@@ -48,17 +48,17 @@ export const Footer: React.FC<FooterProps> = ({ content }) => {
           <button
             type="button"
             onClick={scrollToTop}
-            className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
-            title="Volver arriba"
-            aria-label="Volver arriba"
+            className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+            title={content.footer.backToTop}
+            aria-label={content.footer.backToTop}
           >
             <ArrowUp className="w-4 h-4" />
           </button>
         </div>
 
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/50">
-          <p>© {new Date().getFullYear()} Ana María Muñoz Martínez-Conde. Todos los derechos reservados.</p>
-          <p className="font-light">Propuesta visual y portfolio profesional · Datos contrastados</p>
+          <p>© {new Date().getFullYear()} {content.meta.fullName}. {content.footer.rightsReserved}</p>
+          <p className="font-light">{content.footer.legalNote}</p>
         </div>
       </div>
     </footer>

@@ -165,7 +165,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ content }) => {
                     </a>
                   </div>
                   <span className="text-[11px] text-[#132238]/60 font-medium">
-                    CV Verificado
+                    {content.hero.verifiedBadge}
                   </span>
                 </div>
               </SpotlightCard>

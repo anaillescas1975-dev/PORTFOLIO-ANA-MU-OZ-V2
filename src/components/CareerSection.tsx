@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calendar, MapPin, ChevronDown, ChevronUp, GraduationCap, Globe, Car, Building2, Tv, Award } from 'lucide-react';
+import { Calendar, MapPin, ChevronDown, ChevronUp, GraduationCap, Globe, Car, Building2, Tv } from 'lucide-react';
 import { PortfolioContent, ExperienceItem } from '../types';
 import { SpotlightCard } from './SpotlightCard';
 
@@ -75,10 +75,10 @@ export const CareerSection: React.FC<CareerSectionProps> = ({ content }) => {
                     <button
                       type="button"
                       onClick={() => toggleExpand(exp.id)}
-                      className="self-start sm:self-center inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold text-[#0E1B2E] bg-[#FAF8F5] border border-[#E8E2D9] hover:bg-[#EFECE6] transition-colors"
+                      className="self-start sm:self-center inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold text-[#0E1B2E] bg-[#FAF8F5] border border-[#E8E2D9] hover:bg-[#EFECE6] transition-colors cursor-pointer"
                       aria-expanded={isExpanded}
                     >
-                      <span>{isExpanded ? 'Ver menos' : 'Ver funciones'}</span>
+                      <span>{isExpanded ? content.careerSection.viewLess : content.careerSection.viewResponsibilities}</span>
                       {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
                     </button>
                   </div>
@@ -92,7 +92,7 @@ export const CareerSection: React.FC<CareerSectionProps> = ({ content }) => {
                     <div className="pt-4 border-t border-[#E8E2D9] space-y-4 animate-in fade-in duration-200">
                       <div>
                         <h5 className="text-xs font-bold uppercase tracking-wider text-[#C9828F] mb-2.5">
-                          Responsabilidades & Tareas Desempeñadas:
+                          {content.careerSection.responsibilitiesTitle}
                         </h5>
                         <ul className="space-y-2">
                           {exp.responsibilities.map((r, i) => (
@@ -109,7 +109,7 @@ export const CareerSection: React.FC<CareerSectionProps> = ({ content }) => {
                         <div className="p-4 rounded-xl bg-[#FAF8F5] border border-[#E8E2D9]">
                           <div className="flex items-center gap-2 mb-2 text-xs font-bold uppercase tracking-wider text-[#0E1B2E]">
                             <Tv className="w-4 h-4 text-[#C9828F]" />
-                            <span>Programas y Magacines Destacados:</span>
+                            <span>{content.careerSection.featuredProgramsTitle}</span>
                           </div>
                           <div className="flex flex-wrap gap-2">
                             {exp.programs.map((prog, pIdx) => (
@@ -150,18 +150,18 @@ export const CareerSection: React.FC<CareerSectionProps> = ({ content }) => {
               </div>
               <div>
                 <span className="text-[11px] font-semibold uppercase tracking-wider text-[#C9828F] block">
-                  Educación
+                  {content.careerSection.educationCardKicker}
                 </span>
                 <h4 className="font-serif font-bold text-[#0E1B2E] text-base">
-                  Licenciatura Universitaria
+                  {content.careerSection.educationCardTitle}
                 </h4>
               </div>
             </div>
             <p className="text-sm font-semibold text-[#0E1B2E] mb-1">
-              Ciencias de la Información · Comunicación Audiovisual
+              {content.about.degreeTitle}
             </p>
             <p className="text-xs text-[#132238]/70 font-light">
-              Universidad Complutense de Madrid
+              {content.about.degreeSchool}
             </p>
           </SpotlightCard>
 
@@ -173,22 +173,20 @@ export const CareerSection: React.FC<CareerSectionProps> = ({ content }) => {
               </div>
               <div>
                 <span className="text-[11px] font-semibold uppercase tracking-wider text-[#C9828F] block">
-                  Idiomas
+                  {content.careerSection.languagesCardKicker}
                 </span>
                 <h4 className="font-serif font-bold text-[#0E1B2E] text-base">
-                  Español & Inglés
+                  {content.careerSection.languagesCardTitle}
                 </h4>
               </div>
             </div>
             <div className="space-y-2 text-xs">
-              <div className="flex justify-between items-center">
-                <span className="font-medium text-[#0E1B2E]">Español:</span>
-                <span className="text-[#132238]/70">Nativo</span>
-              </div>
-              <div className="flex justify-between items-center">
-                <span className="font-medium text-[#0E1B2E]">Inglés:</span>
-                <span className="text-[#132238]/70">Nivel medio (B1 / FEDETO 2025)</span>
-              </div>
+              {content.careerSection.languagesList.map((langItem, idx) => (
+                <div key={idx} className="flex justify-between items-center gap-2">
+                  <span className="font-medium text-[#0E1B2E]">{langItem.lang}</span>
+                  <span className="text-[#132238]/70 text-right">{langItem.level}</span>
+                </div>
+              ))}
             </div>
           </SpotlightCard>
 
@@ -200,17 +198,17 @@ export const CareerSection: React.FC<CareerSectionProps> = ({ content }) => {
               </div>
               <div>
                 <span className="text-[11px] font-semibold uppercase tracking-wider text-[#C9828F] block">
-                  Disponibilidad
+                  {content.careerSection.mobilityCardKicker}
                 </span>
                 <h4 className="font-serif font-bold text-[#0E1B2E] text-base">
-                  Movilidad & Contactos
+                  {content.careerSection.mobilityCardTitle}
                 </h4>
               </div>
             </div>
             <ul className="text-xs space-y-1.5 text-[#132238]/80 font-light">
-              <li>· Carnet de conducir y vehículo propio.</li>
-              <li>· Disponibilidad para desplazamientos.</li>
-              <li>· Amplia red de contactos institucionales y de medios.</li>
+              {content.careerSection.mobilityList.map((item, idx) => (
+                <li key={idx}>· {item}</li>
+              ))}
             </ul>
           </SpotlightCard>
         </div>

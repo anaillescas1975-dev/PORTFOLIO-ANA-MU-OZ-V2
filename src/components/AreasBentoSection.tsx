@@ -60,7 +60,7 @@ export const AreasBentoSection: React.FC<AreasBentoSectionProps> = ({ content })
                   </div>
                   <div className="absolute bottom-4 left-4 right-4 text-white">
                     <span className="text-xs font-serif italic text-[#E6B5BF]">
-                      Prensa Escrita · Televisión Nacional y Autonómica · Fotoperiodismo
+                      {content.areasSection.mediaStrip1}
                     </span>
                   </div>
                 </div>
@@ -139,7 +139,7 @@ export const AreasBentoSection: React.FC<AreasBentoSectionProps> = ({ content })
                   </div>
                   <div className="absolute bottom-4 left-4 right-4 text-white">
                     <span className="text-xs font-serif italic text-[#E6B5BF]">
-                      Desfiles · Ferias Nupciales · Redes Sociales Corporativas
+                      {content.areasSection.mediaStrip2}
                     </span>
                   </div>
                 </div>
@@ -243,11 +243,14 @@ export const AreasBentoSection: React.FC<AreasBentoSectionProps> = ({ content })
 
                   <div className="pt-4 border-t border-[#E8E2D9] flex items-center justify-between">
                     <div className="flex flex-wrap items-center gap-1.5 text-xs text-[#132238]/70">
-                      <span>Atención al cliente</span>
-                      <span className="text-[#C9828F]">·</span>
-                      <span>Coordinación logística</span>
-                      <span className="text-[#C9828F]">·</span>
-                      <span>Soporte documental</span>
+                      {content.areasSection.adminStrip.map((item, idx) => (
+                        <React.Fragment key={idx}>
+                          <span>{item}</span>
+                          {idx < content.areasSection.adminStrip.length - 1 && (
+                            <span className="text-[#C9828F]">·</span>
+                          )}
+                        </React.Fragment>
+                      ))}
                     </div>
                     <button
                       type="button"
@@ -268,7 +271,16 @@ export const AreasBentoSection: React.FC<AreasBentoSectionProps> = ({ content })
       </div>
 
       {/* Detail Modal */}
-      <AreaModal area={selectedArea} onClose={() => setSelectedArea(null)} />
+      <AreaModal
+        area={selectedArea}
+        onClose={() => setSelectedArea(null)}
+        labels={{
+          strategicSummary: content.areasSection.modalStrategicSummary,
+          responsibilities: content.areasSection.modalResponsibilities,
+          relatedSkills: content.areasSection.modalRelatedSkills,
+          close: content.areasSection.modalClose,
+        }}
+      />
     </section>
   );
 };

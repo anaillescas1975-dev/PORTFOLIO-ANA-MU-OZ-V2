@@ -44,7 +44,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ content }) => {
                 </div>
                 <div>
                   <span className="text-xs font-semibold uppercase tracking-wider text-[#C9828F] block">
-                    Formación Superior
+                    {content.about.degreeKicker}
                   </span>
                   <h4 className="font-serif text-lg font-bold text-[#0E1B2E]">
                     {content.about.degreeTitle}
@@ -69,7 +69,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ content }) => {
               </p>
               <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-white/70">
                 <span className="font-medium text-white">{content.meta.fullName}</span>
-                <span>Toledo / Madrid</span>
+                <span>{content.meta.location}</span>
               </div>
             </div>
 

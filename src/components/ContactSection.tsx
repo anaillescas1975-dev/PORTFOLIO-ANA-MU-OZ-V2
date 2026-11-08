@@ -78,7 +78,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ content }) => {
                 <button
                   type="button"
                   onClick={handleCopyEmail}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium text-[#0E1B2E] bg-[#FAF8F5] border border-[#E8E2D9] hover:bg-[#EFECE6] transition-colors shrink-0"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium text-[#0E1B2E] bg-[#FAF8F5] border border-[#E8E2D9] hover:bg-[#EFECE6] transition-colors shrink-0 cursor-pointer"
                   title={content.contactSection.copyEmail}
                 >
                   {copied ? (
@@ -113,7 +113,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ content }) => {
                     {content.meta.phone}
                   </a>
                   <p className="text-xs text-[#132238]/60 mt-0.5">
-                    Llamadas y WhatsApp profesional
+                    {content.contactSection.phoneSubtext}
                   </p>
                 </div>
               </div>
@@ -138,7 +138,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ content }) => {
                     linkedin.com/in/ana-maría-muñoz-martínez-conde
                   </a>
                   <p className="text-xs text-[#132238]/60 mt-0.5">
-                    Conectar y revisar recomendaciones
+                    {content.contactSection.linkedinSubtext}
                   </p>
                 </div>
               </div>
@@ -168,10 +168,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ content }) => {
             <div className="p-6 rounded-2xl bg-[#0E1B2E] text-white flex items-center justify-between gap-4">
               <div>
                 <span className="text-xs uppercase font-semibold text-[#E6B5BF] block">
-                  Curriculum Vitae Oficial
+                  {content.contactSection.cvBannerKicker}
                 </span>
                 <p className="font-serif text-lg font-bold text-white">
-                  Descargar CV en formato PDF
+                  {content.contactSection.cvBannerTitle}
                 </p>
               </div>
               <a
@@ -182,7 +182,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ content }) => {
                 className="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold text-[#0E1B2E] bg-white rounded-full hover:bg-[#FAF8F5] transition-colors shrink-0"
               >
                 <Download className="w-4 h-4" />
-                <span>PDF</span>
+                <span>{content.contactSection.cvBannerBtn}</span>
               </a>
             </div>
           </div>
@@ -195,7 +195,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ content }) => {
                   {content.contactSection.form.title}
                 </h3>
                 <p className="text-xs sm:text-sm text-[#132238]/70 mb-8 font-light">
-                  Formulario directo de contacto para departamentos de selección y reclutadores.
+                  {content.contactSection.form.subtext}
                 </p>
 
                 {formSubmitted ? (
@@ -207,22 +207,22 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ content }) => {
                       {content.contactSection.form.successMsg}
                     </h4>
                     <p className="text-xs text-[#132238]/70">
-                      Se ha abierto su cliente de correo para completar el envío o puede escribir directamente a{' '}
+                      {content.contactSection.form.sentNote}{' '}
                       <span className="font-semibold text-[#0E1B2E]">{content.meta.email}</span>.
                     </p>
                     <button
                       type="button"
                       onClick={() => setFormSubmitted(false)}
-                      className="mt-3 px-4 py-2 text-xs font-semibold text-[#0E1B2E] bg-white border border-[#E8E2D9] rounded-full hover:bg-[#FAF8F5]"
+                      className="mt-3 px-4 py-2 text-xs font-semibold text-[#0E1B2E] bg-white border border-[#E8E2D9] rounded-full hover:bg-[#FAF8F5] cursor-pointer"
                     >
-                      Enviar otro mensaje
+                      {content.contactSection.form.sendAnother}
                     </button>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
                       <label className="block text-xs font-semibold uppercase tracking-wider text-[#132238]/80 mb-1.5">
-                        Nombre o Empresa / Responsable de Selección
+                        {content.contactSection.form.nameLabel}
                       </label>
                       <input
                         type="text"
@@ -237,7 +237,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ content }) => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-xs font-semibold uppercase tracking-wider text-[#132238]/80 mb-1.5">
-                          Correo Electrónico
+                          {content.contactSection.form.emailLabel}
                         </label>
                         <input
                           type="email"
@@ -251,7 +251,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ content }) => {
 
                       <div>
                         <label className="block text-xs font-semibold uppercase tracking-wider text-[#132238]/80 mb-1.5">
-                          Asunto / Vacante
+                          {content.contactSection.form.subjectLabel}
                         </label>
                         <input
                           type="text"
@@ -265,7 +265,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ content }) => {
 
                     <div>
                       <label className="block text-xs font-semibold uppercase tracking-wider text-[#132238]/80 mb-1.5">
-                        Mensaje o Propuesta
+                        {content.contactSection.form.messageLabel}
                       </label>
                       <textarea
                         required
@@ -289,7 +289,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ content }) => {
               </div>
 
               <div className="mt-6 pt-4 border-t border-[#E8E2D9] text-center text-xs text-[#132238]/60">
-                <span>Respuesta habitual en menos de 24 horas laborables.</span>
+                <span>{content.contactSection.form.responseGuarantee}</span>
               </div>
             </SpotlightCard>
           </div>
